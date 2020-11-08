@@ -1,5 +1,5 @@
 print("Welcome! I am the bot for drinking games.")
-print("Due to COVID-19 restrictions you can only have a maximum of 10 players")
+print("Due to COVID-19 restrictions you can only have a maximum of 6 players")
 list=[]
 n=int(input("Enter number of players:"))
 for i in range(0,n):
