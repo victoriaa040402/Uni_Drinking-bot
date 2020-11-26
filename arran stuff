@@ -1,0 +1,84 @@
+import random as r
+import time 
+
+def unitCounter():
+    try:
+        people = int(input("How many people are playing the drinking games? 1-6 (Covid sucks)"))
+    except ValueError:
+        print("This input is not a number")
+    #Checks the input to make sure it isnt above 6 or below 1
+    if people > 6 or people < 1:
+        print("Please input a value 6 or lower for the amount of people playing")
+        return unitCounter()
+    else:
+        counter = 0
+        namesArray = []
+        while people != counter:
+            counter += 1
+            namesArray.append(input("What is the name of player " +str(counter)))
+        #Prints the entered names that are in the array in a nice format creating a new line for every entry  
+        else:
+            print("Your players are:")
+            return('\n'.join(map(str, namesArray))) #Changed from print to return
+        
+   
+   
+    #cocktails = []
+
+    #cockTailSpirit = input("Please can you choose a spirit for your cocktail?").lower()
+    
+    
+print(unitCounter())
+
+def premade():
+    print("Welcome to the premade cocktails menu!")
+    time.sleep(1)
+    print("This is where we choose your cocktails!")
+    premadeCocktails = ["Blue Lagoon","Long Island Ice Tea","Mojito","Ginberry fizz","Aperol Spritz"]
+    yourChoice = []
+    numOfCocktails = int(input('how may cocktails do you want?'))
+    
+    try:
+        for i in range (0, numOfCocktails):
+            yourChoice.append(premadeCocktails[r.randint(0,len(premadeCocktails))])
+    
+    except IndexError:
+        print('sorry, youve taken all the drinks we have!')
+    
+    print("Your Drinks Are:")
+    print(yourChoice)
+    
+
+
+
+def ownCocktail():
+    print("Welcome to the make your own cocktail!")
+    time.sleep(1)
+    chosenSpirit = input("Firstly, please choose a spirit, we currently have Vodka, Rum, Gin or Whiskey").lower()
+   
+    if chosenSpirit == ("vodka" or "rum" or "gin" or "whiskey"):
+        print("Success, spirit has been chosen!")
+    else:
+        print("Please enter a valid spirit")
+        ownCocktail()
+    
+    chosenMixer = input("Please choose a mixer out of Coke, Lemonade, Orange Juice").lower()
+
+    if chosenMixer == ("coke" or "lemonade" or "orange Juice"):
+        print("Added to spirit of choice")
+    else:
+        print("Please try again")
+        ownCocktail()
+    
+    print("Your drink is:")
+    print(chosenSpirit, "and", chosenMixer)
+
+
+ans1 = input("Do you wish to choose premade cocktails or make your own?").lower()
+
+if ans1 == "premade":
+    premade()
+
+else:
+    ownCocktail()
+
