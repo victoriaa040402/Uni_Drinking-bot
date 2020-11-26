@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>game1.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+game1.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">random</span>
+<span class="s0">def </span><span class="s1">alphabetGame(playerNum):</span>
+    <span class="s1">print(</span><span class="s2">&quot;The Rules of the game are simple:</span><span class="s0">\n </span><span class="s2">1. You will be tasked with inputting a word which begins with a random letter and is between 3-6 letters long. </span><span class="s0">\n </span><span class="s2">2. You will have to decide as a group a time limit and enforce it yourselves.</span><span class="s0">\n </span><span class="s2">3. If you fail, you drink.&quot;</span><span class="s1">)</span>
+    <span class="s1">rounds = </span><span class="s3">1</span>
+    <span class="s0">while </span><span class="s1">rounds &lt;</span><span class="s3">6</span><span class="s1">:</span>
+        <span class="s0">for </span><span class="s1">i </span><span class="s0">in </span><span class="s1">range(</span><span class="s3">0</span><span class="s0">, </span><span class="s1">playerNum):</span>
+            <span class="s1">x = playing(i)</span>
+            <span class="s0">if </span><span class="s1">x == </span><span class="s0">True</span><span class="s1">:</span>
+                <span class="s1">print(</span><span class="s2">&quot;You have passed round &quot; </span><span class="s1">+str(rounds) + </span><span class="s2">&quot;, onto the next person&quot;</span><span class="s1">)</span>
+            <span class="s0">elif </span><span class="s1">x == </span><span class="s0">False</span><span class="s1">:</span>
+                <span class="s1">print(</span><span class="s2">&quot;You have failed round &quot;</span><span class="s1">+ str(rounds) +</span><span class="s2">&quot; and must drink&quot;</span><span class="s1">)</span>
+            <span class="s1">i+=</span><span class="s3">1</span>
+        <span class="s1">rounds += </span><span class="s3">1</span>
+    <span class="s1">print(</span><span class="s2">&quot;The game is now over, whoever is the least drunk wins&quot;</span><span class="s1">)</span>
+
+<span class="s0">def </span><span class="s1">wordCheck(word):</span>
+    <span class="s1">text = open(</span><span class="s2">'dictionary.txt'</span><span class="s0">, </span><span class="s2">'r'</span><span class="s1">)</span>
+    <span class="s1">text = text.read()</span>
+    <span class="s0">if </span><span class="s1">word.upper() </span><span class="s0">in </span><span class="s1">text:</span>
+        <span class="s0">return True</span>
+    <span class="s0">else</span><span class="s1">:</span>
+        <span class="s0">return False</span>
+
+<span class="s0">def </span><span class="s1">playing(player):</span>
+    <span class="s1">alphabet = [</span><span class="s2">&quot;a&quot;</span><span class="s0">, </span><span class="s2">&quot;b&quot;</span><span class="s0">, </span><span class="s2">&quot;c&quot;</span><span class="s0">, </span><span class="s2">&quot;d&quot;</span><span class="s0">, </span><span class="s2">&quot;e&quot;</span><span class="s0">, </span><span class="s2">&quot;f&quot;</span><span class="s0">, </span><span class="s2">&quot;g&quot;</span><span class="s0">, </span><span class="s2">&quot;h&quot;</span><span class="s0">, </span><span class="s2">&quot;i&quot;</span><span class="s0">, </span><span class="s2">&quot;j&quot;</span><span class="s0">, </span><span class="s2">&quot;k&quot;</span><span class="s0">, </span><span class="s2">&quot;l&quot;</span><span class="s0">, </span><span class="s2">&quot;m&quot;</span><span class="s0">, </span><span class="s2">&quot;n&quot;</span><span class="s0">, </span><span class="s2">&quot;o&quot;</span><span class="s0">, </span><span class="s2">&quot;p&quot;</span><span class="s0">, </span><span class="s2">&quot;q&quot;</span><span class="s0">, </span><span class="s2">&quot;r&quot;</span><span class="s0">, </span><span class="s2">&quot;s&quot;</span><span class="s0">, </span><span class="s2">&quot;t&quot;</span><span class="s0">, </span><span class="s2">&quot;u&quot;</span><span class="s0">, </span><span class="s2">&quot;v&quot;</span><span class="s0">, </span><span class="s2">&quot;w&quot;</span><span class="s0">, </span><span class="s2">&quot;x&quot;</span><span class="s0">, </span><span class="s2">&quot;y&quot;</span><span class="s0">, </span><span class="s2">&quot;z&quot;</span><span class="s1">]</span>
+    <span class="s1">wordLength = random.randint(</span><span class="s3">3</span><span class="s0">,</span><span class="s3">6</span><span class="s1">)</span>
+    <span class="s1">wordStart = random.choice(alphabet)</span>
+    <span class="s1">answer = input(</span><span class="s2">&quot;Player &quot;</span><span class="s1">+ str(player+</span><span class="s3">1</span><span class="s1">)+ </span><span class="s2">&quot; enter a &quot;</span><span class="s1">+ str(wordLength) + </span><span class="s2">&quot; letter word beginning with &quot;</span><span class="s1">+ wordStart+</span><span class="s2">&quot;.&quot;</span><span class="s1">) </span><span class="s4">#+1 so it displays the right player number</span>
+    <span class="s1">answer.lower()</span>
+    <span class="s0">if </span><span class="s1">wordStart == answer[</span><span class="s3">0</span><span class="s1">] </span><span class="s0">and </span><span class="s1">len(answer) == wordLength </span><span class="s0">and </span><span class="s1">wordCheck(answer) == </span><span class="s0">True</span><span class="s1">:</span>
+        <span class="s0">return True</span>
+    <span class="s0">else</span><span class="s1">:</span>
+        <span class="s0">return False</span></pre>
+</body>
+</html>
